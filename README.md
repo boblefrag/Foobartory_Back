@@ -1,21 +1,21 @@
 # Foobartory
 
 Foobartory is an application that let you create foobars and eventualy
-create a factory of 30 workers. Creating foobar follows some rules but
+create a factory of 30 workers. Creating foobars follows some rules but
 in a world of changes we do know those rules can change. Foobartory
-implement a rule manager that you can change when rules change.
+implement a rule manager that you can use when rules change.
 
 In the same way, new workers with new capabilities, faster or more
 effctive can be invented. Foobartory take this into account and give
-you easy ways to change the way workers works.
+you easy ways to change how workers works.
 
 Of course you need bars and foos to create foobars that you will
 convert into new workers because what you really want is 30 workers
 but the real currency that make your factory efficient is time.
 
 In this game we take time as a currency. It give you the ability to
-run the program wth different strategies and find quickly the sweet
-spot to win the game the fastest way possible.
+run the program wth different strategies and quickly find the sweet
+spot to win the game the fastest possible way.
 
 ## Install
 

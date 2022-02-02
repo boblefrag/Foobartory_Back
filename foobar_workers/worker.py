@@ -15,6 +15,10 @@ def check_bar_price():
 
 
 class REQUIREMENTS:
+    """
+    here you get the cost of each activity.
+    If you want to play with the application it's the right place to start
+    """
     create_foo = {"seconds": 1}
     create_bar = {"seconds": check_bar_price}
     create_foobar = {"seconds": 2, "foos": 1, "bars": 1}
@@ -65,7 +69,7 @@ class Worker:
     @classmethod
     def activities(cls):
         """
-        create a dict that define all the acivities available with this worker
+        create a dict that define all the activities available with this worker
         """
         return {
             func: getattr(cls, func)
@@ -102,11 +106,11 @@ class Worker:
     @validate(**REQUIREMENTS.create_foo)
     def create_foo(self, **requirements):
         """
-        create_foo like other functions does the same work.
-        - ensure requirements are met with validate decorator.
-        - pay the resquirement
-        - get the retribution
-        - send it to the manager
+        create_foo like other `create_*` functions does the same work:
+        - ensure requirements are met with `validate` decorator.
+        - pay the requirements
+        - get the retributions
+        - send retributions to the manager
         """
         self._pay_requirements(**requirements)
         attr, value = RETRIBUTIONS["create_foo"](self)

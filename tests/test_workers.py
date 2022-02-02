@@ -2,6 +2,7 @@ from unittest.mock import Mock, patch
 import pytest
 from foobar_workers.manager import Manager
 from foobar_workers.worker import REQUIREMENTS, Worker
+from foobar_workers.utils import ValidationError
 
 
 @patch("random.random", return_value=0.1)
@@ -42,12 +43,12 @@ def test_task_not_enough_ressource(activity):
     """
     GIVEN a worker with no ressources
     WHEN trying to do an activity
-    THEN AssertionError is raised
+    THEN ValidationError is raised
     """
     john = Manager()
     paul = Worker(john)
     paul.activity = activity
-    with pytest.raises(AssertionError):
+    with pytest.raises(ValidationError):
         getattr(paul, activity)()
 
 

@@ -1,5 +1,5 @@
 from .worker import Worker, REQUIREMENTS
-
+from .utils import ValidationError
 
 class Manager:
     """
@@ -17,7 +17,7 @@ class Manager:
 
     def __init__(self):
         """
-        Create our 2 first workers
+        Create our first 2 workers.
         """
         self.workers = [Worker(self) for _ in range(2)]
 
@@ -77,14 +77,14 @@ class Manager:
             for worker in workers:
                 try:
                     worker.change_activity(activity)
-                except AssertionError:
+                except ValidationError:
                     continue
 
         workers = [worker for worker in self.workers if worker.activity == activity]
         for worker in workers:
             try:
                 getattr(worker, activity)()
-            except AssertionError:
+            except ValidationError:
                 pass
 
     def create_foo(self, count):

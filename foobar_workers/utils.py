@@ -1,6 +1,9 @@
+class ValidationError(Exception):
+    pass
+
 def validate(**requirements):
     """
-    Ensure worker has enough ressources to complete a task. Raises an AssertionError otherwise
+    Ensure worker has enough ressources to complete a task. Raises a ValidationError otherwise
     Ensure worker is on the right activity. Raises ValueError otherwise
     """
 
@@ -19,7 +22,10 @@ def validate(**requirements):
                 else:
                     func_val = value
                 func_kwargs[requirement] = func_val
-                assert getattr(self, requirement) >= func_val
+                try:
+                    assert getattr(self, requirement) >= func_val
+                except AssertionError:
+                    raise ValidationError()
             return f(self, *args, **func_kwargs)
 
         return wrapper
